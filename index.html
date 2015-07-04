@@ -41,7 +41,6 @@
             <span data-bind="text: ko.toJSON(location())"></span>
           </pre> -->
         </div>
-        <!--
         <div class="col-md-6 col-xs-12">
           <form>
             <div class="form-group">
@@ -50,7 +49,6 @@
             <button type="submit" class="btn btn-default">Search</button>
           </form>
         </div>
-          -->
       </div>
       <hr/>
       <div class="row">
@@ -60,11 +58,11 @@
             <button type="button" class="btn btn-default" data-bind="css: { active: mode() == 'walk' }, click: function () { mode('walk'); }">Walk</button>
             <button type="button" class="btn btn-default" data-bind="css: { active: mode() != 'walk' }, click: function () { mode('bike'); }">Cycle</button>
           </div>
-          <ul class="list-unstyled" data-bind="foreach: filteredResults">
+          <ul class="list-unstyled" data-bind="foreach: results">
             <li>
               <div id="result" class="row">
                 <div class="col-md-9">
-                  <h4><span data-bind="text: name"></span> <small><span data-bind="text: typeName"></span></small></h4>
+                  <h4><span data-bind="text: name"></span> <small><span data-bind="text: typeString"></span></small></h4>
                   <span data-bind="text: desc"></span>
                 </div>
                 <div id="mins" class="col-md-3 text-center">

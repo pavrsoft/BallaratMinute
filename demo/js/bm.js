@@ -33,15 +33,16 @@ $(document).ready(function() {
 
 function getResults(location, resultsObsv, transportMode) {
   $.ajax({
-    url: 'http://ballaratminute.azurewebsites.net/',
+    url: 'http://ballaratminute.azurewebsites.net/api/values',
     data: {
-      lat: location.latitude,
-      long: location.longitude
+      latitude: location.latitude,
+      longitude: location.longitude
     }
   })
     .done(function(data) {
       //resultsObsv = ko.mapping.fromJS(data.d);
-      ko.mapping.fromJSON(testdata, {}, resultsObsv);
+      ko.mapping.fromJS(data, {}, resultsObsv);
+      //ko.mapping.fromJSON(testdata, {}, resultsObsv);
       resultsObsv.sort(transportMode == "walk" ? walkSort : bikeSort);
     });
 }
@@ -57,6 +58,12 @@ function CreateBMViewModel() {
   self.mode = ko.observable("walk");
   self.mode.subscribe(function(newValue) {
     self.results.sort(newValue == "walk" ? walkSort : bikeSort);
+  });
+  self.filteredResults = ko.pureComputed(function(){
+    if (self.mode() != "walk") return self.results();
+    return ko.utils.arrayFilter(self.results(), function(result) {
+       return result.walktime() <= 10;
+    });
   });
   
   // self.displayTime = ko.computed(function(){
