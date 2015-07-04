@@ -1,0 +1,21 @@
+{
+    "environmentSettings": {
+        "webSite": {
+            "name": "BallaratMinute",
+            "location": "Australia Southeast"
+        },
+        "databases": [
+            {
+                "connectionStringName": "DefaultConnection",
+                "databaseName": "BallaratMinute_db",
+                "serverName": "",
+                "user": "pavrsoft",
+                "password": "",
+                "edition": "",
+                "size": "",
+                "collation": "",
+                "location": "Southeast Asia"
+            }
+        ]
+    }
+}
