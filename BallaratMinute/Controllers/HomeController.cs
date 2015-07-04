@@ -10,7 +10,9 @@ namespace BallaratMinute.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            return File("index.html", "text/html");
+            //return new RedirectResult("index.html", true);
+            ViewBag.Title = "Ballarat Minute";
 
             return View();
         }
