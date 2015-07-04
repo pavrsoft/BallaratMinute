@@ -63,7 +63,7 @@
           <ul class="list-unstyled" data-bind="foreach: filteredResults">
             <li>
               <div id="result" class="row">
-                <a href="#" data-bind="attr: { href: mapUrl(); }">
+                <a href="#" data-bind="attr: { href: 'http://www.openstreetmap.org/?mlat=' + coords.lat() + '&amp;mlon=' + coords.long() + '#map=17/' + coords.lat() + '/' + coords.long() }">
                   <div class="col-md-9">
                     <h4><span data-bind="text: name"></span> <small><span data-bind="text: typeName"></span></small></h4>
                     <span data-bind="text: desc"></span>
