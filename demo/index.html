@@ -55,24 +55,34 @@
       <hr/>
       <div class="row">
         <div class="col-md-8 col-md-offset-2 col-xs-12">
-          <h3>Results</h3>
-          <div class="btn-group" role="group" aria-label="transport mode">
+          <h3 style="display: none;" id="resultsHeading">Results</h3>
+          <div style="display: none;" id="modeButtons" class="btn-group" role="group" aria-label="transport mode">
             <button type="button" class="btn btn-default" data-bind="css: { active: mode() == 'walk' }, click: function () { mode('walk'); }">Walk</button>
             <button type="button" class="btn btn-default" data-bind="css: { active: mode() != 'walk' }, click: function () { mode('bike'); }">Cycle</button>
           </div>
           <ul class="list-unstyled" data-bind="foreach: filteredResults">
             <li>
               <div id="result" class="row">
-                <div class="col-md-9">
-                  <h4><span data-bind="text: name"></span> <small><span data-bind="text: typeName"></span></small></h4>
-                  <span data-bind="text: desc"></span>
-                </div>
-                <div id="mins" class="col-md-3 text-center">
-                  <span class="lead"><span data-bind="text: ($parent.mode() == 'walk' ? walktime() : biketime())"></span> minutes</span>
-                </div>
+                <a href="#" data-bind="attr: { href: mapUrl(); }">
+                  <div class="col-md-9">
+                    <h4><span data-bind="text: name"></span> <small><span data-bind="text: typeName"></span></small></h4>
+                    <span data-bind="text: desc"></span>
+                  </div>
+                  <div id="mins" class="col-md-3 text-center">
+                    <span class="lead"><span data-bind="text: ($parent.mode() == 'walk' ? walktime() : biketime())"></span> minutes</span>
+                  </div>
+                </a>
               </div>
             </li>
           </ul>
+          <div style="display: none;" id="activityIndicator" class="col-md-offset-2 col-md-8 col-xs-12">
+            <p class="text-center lead">Loading Data...</p>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                <span class="sr-only">Loading Data</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

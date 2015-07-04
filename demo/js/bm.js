@@ -44,6 +44,9 @@ function getResults(location, resultsObsv, transportMode) {
       ko.mapping.fromJS(data, {}, resultsObsv);
       //ko.mapping.fromJSON(testdata, {}, resultsObsv);
       resultsObsv.sort(transportMode == "walk" ? walkSort : bikeSort);
+      $("#activityIndicator").hide();
+      $("#resultsHeading").show();
+      $("#modeButtons").show();
     });
 }
 
@@ -77,6 +80,10 @@ function CreateBMViewModel() {
   };
   
   self.updateCoords = function() {
+    self.results([]);
+    $("#activityIndicator").show();
+    $("#resultsHeading").hide();
+    $("#modeButtons").hide();
     navigator.geolocation.getCurrentPosition(success, error, options);
   }
 }
