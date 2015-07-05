@@ -82,7 +82,8 @@ namespace BallaratMinute.Tests.Controllers
         public void Import()
         {
             ValuesController controller = new ValuesController();
-            controller.Import(true);
+            //controller.Import(true);
+            controller.GetFromCoordinates(-37.5640130351672, 143.853936042702);
         }
     }
 }
